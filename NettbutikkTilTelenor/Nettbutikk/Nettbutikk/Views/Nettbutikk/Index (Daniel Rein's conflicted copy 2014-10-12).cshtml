@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Nettbutikken</title>
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/Sidebar.css" rel="stylesheet" />
+   
+</head>
+<body>
+                         <!--karusel start-->
+    <div id="karusel" class="carousel slide col-md-offset-1" data-ride="carousel" >
+        <!-- valg sirkler -->
+        <ol class="carousel-indicators">
+            <li data-target="#karusel" data-slide-to="0" class="active"></li>
+            <li data-target="#karusel" data-slide-to="1"></li>
+            <li data-target="#karusel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- innhold i karusel -->
+        <div class="carousel-inner">
+            <div class="item active" align="center">
+                <img src="~/Images/wallpaperlaptop.jpg" />
+                <div class="carousel-caption">
+                    <h4>Bærbar laptop</h4>
+                </div>
+            </div>
+            <div class="item" align="center">
+                <img src="~/Images/wallpaperspeaker.jpg" />
+                <div class="carousel-caption">
+                    <h4>HIFI høytalere</h4>
+                </div>
+            </div>
+            <div class="item" align="center">
+                <img src="~/Images/wallpapertv.jpg" />
+                <div class="carousel-caption">
+                    <h4>HD tv</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- kontroller-->
+        <a class="left carousel-control" href="#karusel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#karusel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+                        <!--karusel slutt-->
+
+                        <br />
+                        <div id="visVarer" class="panel-default"> </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#visVarer').load("@Url.Action("ListAlleVarer" , "Nettbutikk" )");
+        });
+    </script>
+</body>
+
+</html>

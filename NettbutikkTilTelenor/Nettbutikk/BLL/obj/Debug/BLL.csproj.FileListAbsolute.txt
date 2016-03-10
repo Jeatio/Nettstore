@@ -1,0 +1,11 @@
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\BLL\bin\Debug\BLL.dll
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\BLL\bin\Debug\BLL.pdb
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\BLL\bin\Debug\DAL.dll
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\BLL\bin\Debug\Model.dll
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\BLL\bin\Debug\EntityFramework.dll
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\BLL\bin\Debug\DAL.pdb
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\BLL\bin\Debug\Model.pdb
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\BLL\bin\Debug\EntityFramework.xml
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\BLL\obj\Debug\BLL.dll
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\BLL\obj\Debug\BLL.pdb

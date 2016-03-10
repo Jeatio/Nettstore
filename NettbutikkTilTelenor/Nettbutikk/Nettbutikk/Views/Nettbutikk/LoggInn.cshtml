@@ -1,0 +1,84 @@
+﻿@model Nettbutikk.Model.PresentasjonsModel.innlogging
+           @{
+               Layout = null;
+           }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Logg Inn</title>
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <div class="container body-content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Logg inn</h4>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.epostadresse, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.epostadresse, new { htmlAttributes = new { @class = "form-control", @id = "epost" } })
+                        @Html.ValidationMessageFor(model => model.epostadresse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.passord, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.passord, new { htmlAttributes = new { @class = "form-control", @id = "pass" } })
+                        @Html.ValidationMessageFor(model => model.passord, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a href="#" id="log" class="btn btn-success">Logg inn</a>
+                        
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+ 
+    <script>
+       
+        $(document).ready(function () {
+            $('#log').click(function () {
+                var epost = $('#epost').val();
+                var pass = $('#pass').val();       
+                $.ajax({
+                    url: '@Url.Action("LoggInnSjekk","Nettbutikk")',
+                    data: {email: epost, passord: pass},
+                    success: function (OK) {
+                        if (OK == "True") {
+                            window.location.reload();
+                        } else {
+                            $('#epost').val("Epost eller Passord er ikke riktig!");
+                            $('#pass').val("");
+                        }
+                    }
+
+                });
+            });
+            $('#epost').dblclick(function() {
+                $('#epost').val("");
+            });
+            $('#pass').dblclick(function () {
+                $('#pass').val("");
+            });
+
+        });
+</script>
+    
+</body>
+</html>

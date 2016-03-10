@@ -1,0 +1,76 @@
+﻿@model List<Nettbutikk.Model.PresentasjonsModel.visallekvitteringer>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VisAlleKviteringer</title>
+</head>
+<body>
+    <h2>Kvitteringer</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].dato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].pris)
+            </th>
+            <th></th>
+        </tr>
+    @if(Model != null)
+    { 
+       foreach (var item in Model) 
+       {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pris)
+            </td>
+            <td>
+                <a href="@Url.Action("VisKvittering", "Ordre", new { kvitteringsID = item.kvitteringsid })">Vis Kvitering</a>
+            </td>
+        </tr>
+      }
+    }
+    
+    </table>
+    <div id="bekreft">
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="kjopOK" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" id="myModalLabel">Kjøp OK</h4>
+                </div>
+                <div class="modal-body">
+                    Kjøpet er bekreftet!
+
+                </div><div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+</div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- Modal slutt -->
+    @if(ViewBag.betalt != null)
+    {
+        if((bool)ViewBag.betalt)
+        {
+            ViewBag.betalt = false;
+            <script>
+                $('#kjopOK').modal('show');
+  
+            </script>
+        }
+    }
+        
+</body>
+</html>

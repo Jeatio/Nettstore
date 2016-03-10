@@ -1,0 +1,202 @@
+﻿@model List<Nettbutikk.Model.PresentasjonsModel.bilderimappe>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>visAlleVareBilder</title>
+</head>
+<body>
+    <div class="container-fluid panel-body">
+        <p class="pull-right">
+            <a href="@Url.Action("ListVarer","Ansatt")" class="btn btn-info">Tilbake til Varer</a>
+            <a href="@Url.Action("OpprettVare", "Ansatt")" class="btn btn-info">Opprett Vare</a>
+        </p>
+
+      @if (Model != null)
+      {
+        
+         using (Html.BeginForm("UploadBilde", "Ansatt", FormMethod.Post, new { enctype = "multipart/form-data" }))
+         {
+            <div class="row">
+                <div class="col-md-6">
+                    @if (ViewBag.Varer != null)
+                    {
+                    <p>Velg vare du vil knytte bildene til</p>
+                    <select id="varer">
+                        @foreach (var vare in (List<Nettbutikk.Model.PresentasjonsModel.fremvisningsvarer>)ViewBag.Varer)
+                        {
+                            <option value="@(vare.idnr)">@vare.betegnelse</option>
+                        }
+                    </select>
+                    }
+                    <button class=" btn btn-default" onclick="leggInnBilde()">Lagre</button>
+                 </div>
+                 <div class="col-md-6">
+                    <br />
+                    <br />
+                    <a href="#" data-toggle="modal" data-target="#VelgMappe" style="float:right; color:black;" ><span class="glyphicon glyphicon-upload" > LastOpp</span></a>
+                     <input id="filene" type="file" name="file" multiple="multiple" style="float:right;"> 
+                 </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="VelgMappe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Velg Mappe</h4>
+                        </div>
+                        <div class="modal-body panel-body">
+                            @foreach (var dir in Model)
+                            {
+                               <div class="col-md-4 panel" id="@(dir.Mappe + "Valgt")">
+                                   <a href="#" class="glyphicon glyphicon-folder-close" onclick="mappeValg('@(dir.Mappe)')" style="color:black;"> @dir.Mappe</a>
+                               </div>
+                            }
+                            <div class="col-md-4 panel">
+                                <a href="#" class="glyphicon glyphicon-plus-sign" onclick="nyMappe()" style="color:black;"> Nymappe</a> 
+                        </div>
+       
+                        </div>
+                        <div class="modal-footer">
+                            <div id="opprettK" style="float:left;">
+                                 <input type="submit" value="Last opp" />
+                                 <input id="mappenavn" hidden type="text" name="mappe" />
+                            </div>
+                          
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal slutt -->
+
+          }
+     <br />
+    <div class="row panel panel-default">
+        <div class="col-md-2">
+            <div class="list-group">
+                @foreach (var dir in Model)
+                {
+                    <a href="#" class="list-group-item" onclick="seInnHold('@(dir.Mappe)')" data-mappe="@(dir.Mappe)"><span id="@(dir.Mappe + "glyf")" class="glyphicon glyphicon-folder-close"> @dir.Mappe</span></a>
+                }
+                @{var i = 1;}
+            </div>
+          </div>
+        <div class="col-md-10">
+            @foreach (var dir in Model)
+            {
+                <div hidden id="@(dir.Mappe)">
+                    @foreach (var fil in dir.filer)
+                    {
+                        <div class="col-md-4 panel panel-default">
+                            <img src="@fil" width="75%" style=" display:block; margin-left:auto; margin-right:auto;" />
+                            <a href="#" class="glyphicon glyphicon-trash" onclick="slett('@(fil)' , '@(dir.Mappe)')" style="float:right; color:black;">Slett</a>
+                            <label>
+                                <input type="checkbox" onclick="erChecked('@(fil)', @(i))" id="@(i++)">
+                            </label>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+     </div>
+      }
+      else
+      {
+        <p>tom</p>
+      }
+
+       </div>
+    <script>
+        var bilder = new Array();
+        var j = 0;
+        var aktivmappe = "";
+   
+        function seInnHold(map) {
+            if ($('#' + map).is(":visible")) {
+                $('#' + map).hide();
+                $('#' + map + 'glyf').removeClass();
+                $('#' + map + 'glyf').addClass('glyphicon glyphicon-folder-close')
+            }
+            else {
+                if (aktivmappe != "") {
+                    $('#' + aktivmappe).hide();
+                    $('#' + aktivmappe + 'glyf').removeClass();
+                    $('#' + aktivmappe + 'glyf').addClass('glyphicon glyphicon-folder-close')
+                }
+                $('#' + map).show();
+                aktivmappe = map;
+                $('#' + map + 'glyf').removeClass();
+                $('#' + map + 'glyf').addClass('glyphicon glyphicon-folder-open');
+            }
+        }
+        function erChecked(bilde, i) {
+            if($('#' + i).is(":checked"))
+            {
+                bilder[j++]=bilde;
+            }
+            else
+            {
+                for (var k = 0; k< bilder.length; k++) 
+                {
+                    if(bilder[k] == bilde)
+                        bilder[k]="";
+                }              
+            }
+        }
+        function leggInnBilde() {
+            var v = document.getElementById("varer");
+            var vareid = v.options[v.selectedIndex].value;
+            var pic = bilder;
+            $.ajax({
+                url: '@Url.Action("leggInnBilde", "Ansatt")',
+                data: { bildene: pic, vareNr: vareid },
+                traditional: true,
+                success: function (OK) {
+                    if (OK == "True") {
+                        window.location.reload();
+                    } 
+                }
+
+            });
+        }
+        var valgtMappe = "";
+        function mappeValg(mappenavn) {
+            if ($('#mappenavn').is(":visible")) {
+                $('#mappenavn').hide();
+            }
+            if (valgtMappe != "") {
+                $('#' + valgtMappe + 'Valgt').css("border-color", "white");
+            }
+            valgtMappe = mappenavn;
+            $('#' + mappenavn + 'Valgt').css("border-color", "blue");
+            $('#mappenavn').val(mappenavn);
+        }
+        function nyMappe() {
+            if (valgtMappe != "") {
+                $('#' + valgtMappe + 'Valgt').css("border-color", "white");
+            }
+            $('#mappenavn').val('');
+            $('#mappenavn').show();
+        }
+        function slett(filnavn, mappenavn)
+        {
+
+            $.ajax({
+                url: '@Url.Action("SlettBilde", "Ansatt")',
+                data: { fil: filnavn, mappe: mappenavn },
+                success: function (OK) {
+                    if (OK != "False") {
+                        window.location.reload();
+                    }
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

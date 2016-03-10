@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site/Nettbutikk" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\HansMagnus\\Documents\\Skole\\WebApplikasjon\\Nettbutikk\\Nettbutikk\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\HansMagnus\\Documents\\Skole\\WebApplikasjon\\Nettbutikk\\Nettbutikk\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="NettbutikkDB-Web.config Connection String" description="" value="Data Source=dotnet.cs.hioa.no;Persist Security Info=True;User ID=s184483;Password=gapt5mugs" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\HansMagnus\\Documents\\Skole\\WebApplikasjon\\Nettbutikk\\Nettbutikk\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NettbutikkDB']/@connectionString" />
+  </parameter>
+</parameters>

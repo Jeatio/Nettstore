@@ -1,0 +1,133 @@
+﻿@model Nettbutikk.Model.PresentasjonsModel.minProfil
+<html>
+<head>
+    <title>minProfil</title>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="col-md-offset-4">
+            <h2>MinProfil</h2>
+        </div>
+        <div id="innhold" class="btn btn-group col-md-offset-4 panel panel-default" data-toggle="modal" data-target="#minProfil">
+
+            @if(Model != null)
+            {
+                
+           
+            <table style="font-size:1.2em;" class="glyphicon glyphicon-user ">
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">Fornavn </label> </td>
+                    <td class="pull-left" style="margin-left:20px">@Model.fornavn </td>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">Etternavn</label></td>
+                    <td class="pull-left" style="margin-left:20px">@Model.etternavn</td>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">Adresse</label></td>
+                    <td class="pull-left" style="margin-left:20px">@Model.adresse</td>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">TelefonNummer</label></td>
+                    <td class="pull-left" style="margin-left:20px">@Model.telefonnummer</td>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">Epostadresse</label></td>
+                    <td class="pull-left" style="margin-left:20px">@Model.epostadresse</td>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">Poststed</label></td>
+                    <td class="pull-left" style="margin-left:20px">@Model.poststeder</td>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">PostNr</label></td>
+                    <td class="pull-left" style="margin-left:20px">@Model.postnr</td>
+                </tr>
+
+                <tr>
+                    <th></th>
+                    <th><a href="#" class="btn btn-success pull-right">Endre</a></th>
+                </tr>
+
+            </table>
+            }
+        </div>
+     
+        <!-- Modal -->
+        <div class="modal fade" id="minProfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Endre</h4>
+                    </div>
+                    <div class="modal-body">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <div id="endreP"><a href="#" data-src="endrePass" class="btn btn-primary pull-left" >Endre Passord</a></div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- Modal slutt -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="lagreOK" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title" id="myModalLabel">Feil Passord</h4>
+                    </div>
+                    <div class="modal-body">
+                        Passord stemmer ikke. Lagring ble ikke fullført.
+
+                    </div><div class="modal-footer">
+                   
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Modal slutt -->
+
+    </div>
+    @if (ViewBag.LagringOK != null)
+    {
+        if (!(bool)ViewBag.LagringOK)
+        {
+            ViewBag.LagringOK = null;
+            <script>
+                $('#lagreOK').modal('show');
+
+            </script>
+        }
+    }
+    <script>
+        $('#innhold').on('click', function (e) {
+            e.preventDefault();
+            $('.modal-body').load("@Url.Action("EndreKunde" , "Kunde" )");
+            $('.model-title').val("Endre");
+            $('#endreP').show();
+        });
+
+        $('a[data-src=endrePass]').on('click', function (e) {
+            e.preventDefault();
+            $('.modal-body').load("@Url.Action("EndreKundePassord" , "Kunde" )");
+            $('#endreP').hide();
+            $('.model-title').val("Endre Passord");
+            
+        });
+
+    </script>
+</body>
+</html>

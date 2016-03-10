@@ -1,0 +1,231 @@
+﻿    <!DOCTYPE html>
+    <html class="backCollor">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HD-Elektronikk</title>    
+        
+        <script src="~/Scripts/jquery-2.1.1.js"></script>  
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+        <link href="~/Content/Sidebar.css" rel="stylesheet" />
+
+    </head>
+    <body>
+
+        <div class="panel-body container-fluid backCollor">
+
+            <!-- nav menu bar start -->
+
+            <div class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="@Url.Action("Index", "Nettbutikk")" class="navbar-brand" style="color:orange;">HD-Elektronikk</a>
+                   
+
+                </div>
+                <div class="navbar-collapse navbar-inverse-collapse">
+                    <ul class=" nav navbar-nav">
+                    <li>
+                        
+                    </ul>
+
+
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control col-lg-8" placeholder="Søk etter vare" id="sokbar" list="forslag" autocomplete="off">
+                            <datalist id="forslag"></datalist>
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" id="sokKnapp"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        @if (Session["ErAdmin"] != null)
+                        {
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:orange;">Alternativer<b class="caret"></b></a> 
+                                <ul class="dropdown-menu toggled">
+                                    <li>
+                                        <a href="@Url.Action("ListKunder","Ansatt")"><span class="glyphicon glyphicon-user"></span> Administrer Kunder</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("ListKvitteringer","Ansatt")"><span class="glyphicon glyphicon-usd"></span> Kvitteringer</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("ListVarer","Ansatt")"><span class="glyphicon glyphicon-folder-open"></span> Administrer Varer</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="@Url.Action("LoggUt", "Nettbutikk")">Logg Ut</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }                   
+                            @if (Session["LoggetInn"] != null)
+                            {
+                            <li>
+                                <a href="@Url.Action("VisHandlevogn", "Ordre", new {vareid = 0 })"><span class="glyphicon glyphicon-shopping-cart" style="color: #D9971F;"> Handlevogn</span></a>
+                            </li>
+                            <li class="dropdown">
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: orange; ">Min Profil<b class="caret"></b></a>
+                                <ul class="dropdown-menu toggled">
+                                    <li>
+                                        <a href="@Url.Action("MinProfil", "Kunde")"><span class="glyphicon glyphicon-user"></span>Min Profil</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("VisAlleKvitteringer", "Ordre")"><span class="glyphicon glyphicon-list"></span>Vis Kvitteringer</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("VisHandlevogn", "Ordre", new { vareid = 0})"><span class="glyphicon glyphicon-shopping-cart"></span>Handlevogn</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="@Url.Action("LoggUt", "Nettbutikk")">Logg Ut</a>
+                                        
+                                    </li>
+                                </ul>
+                            </li>
+                            }
+                        <li>
+                            @if (Session["LoggetInn"] != null || Session["ErAdmin"] != null)
+                            {
+                                <a href="@Url.Action("LoggUt", "Nettbutikk")" style="color: #D9971F">Logg Ut</a>
+                                
+                            }
+                            else
+                            {
+                        <!-- Knapp til å starte modal -->
+                            <a href="#" data-toggle="modal" data-target="#myModal" data-src="innlogging" style="color: #D9971F;">
+                                Registrer/Logg Inn
+                            </a>
+                            }
+                            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- nav menu bar slutt"-->
+
+
+
+            <br />
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel"></h4>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <div id="opprettK" align="left">
+                                <h3>Ny kunde? Registrer deg her:</h3>
+                                <a href="#" data-src="registrer">
+                                    Opprett bruker
+                                </a>
+                            </div>
+                            <br />
+                            <div id="tilbake" class="pull-left">
+                                   <a href="#" data-src="innlogging" class="btn btn-default" id="regLogg">Logg inn</a>
+                            </div>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal slutt -->
+
+    
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="list-group" >
+                        @Html.Action("MenyViser","Nettbutikk")
+                    </div>
+                </div>
+                <div id="holder" class="col-md-10">
+
+                    @RenderBody()
+                  
+                </div>
+            </div>
+            <div id="customFooter">
+
+                <footer class="bottom-right">
+                    <p> &copy;@DateTime.Now.Year -HiOA HD-Elektronikk <p>
+                </footer>
+            </div>
+            </div>
+
+       
+
+            <script>
+
+    $('a[data-src=innlogging]').on('click', function (e) {
+        e.preventDefault();
+        $('.modal-body').load("@Url.Action("LoggInn" , "Nettbutikk" )");
+        $('#opprettK').show();
+        $('#tilbake').hide();
+    });
+
+    $('a[data-src=registrer]').on('click', function (e) {
+        e.preventDefault();
+        $('.modal-body').load("@Url.Action("OpprettKunde" , "Kunde" )");
+        $('#opprettK').hide();
+        $('#tilbake').show();
+    });
+
+    $('#sokbar').on('keyup', function () {
+        var input = $('#sokbar').val();
+        if (event.keyCode == 13) {
+            $('#sokKnapp').click()
+        }
+        if (input != "") {
+
+            $.ajax({
+
+                url: '@Url.Action("Sokbar","Vare")',
+                data: { sokord: input },
+                success: function (varer) {
+                    document.getElementById('forslag').innerHTML = varer;
+                }
+            });
+
+        }
+    });
+                $('#sokKnapp').on('click', function (e) {
+                    e.preventDefault();
+                    var input = $('#sokbar').val();
+                    if (input != "") {
+                        $.ajax({
+                            url: '@Url.Action("ListAlleSokVarer","Vare")',
+                            data: { sok: input },
+                            success: function (varer) {
+                                document.getElementById("holder").innerHTML = varer;
+                            }
+                        });
+                    }
+                });
+            </script>
+
+       
+
+
+
+    </body>
+
+</html>

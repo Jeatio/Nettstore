@@ -1,0 +1,75 @@
+﻿@model List<Nettbutikk.Model.PresentasjonsModel.visordre>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Handlevogn</title>
+
+
+</head>
+<body>
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].bestiltvarebilde)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].betegnelse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].antall)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].prisPrEnhet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].detaljer)
+            </th>
+        </tr>
+   
+     @foreach (var item in Model)
+      {  
+        <tr>
+            <td><a href="@Url.Action("SeEnVare", "Vare", new { vareID = item.varenr })"><img id="setbilde" class="thumbnail" src="@(item.bestiltvarebilde)" width="100" height="100" /></a></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.betegnelse)
+            </td>
+            <td>   
+                <a href="@Url.Action("EndreAntallVarer", "Ordre", new { ant=1, ordrenummer = item.ordrenr })" style="color:black;">
+                    <span class=" glyphicon glyphicon-plus">
+    </span>
+            </a>
+                <b>@(item.antall)</b>      
+                <a href="@Url.Action("EndreAntallVarer", "Ordre", new { ant=-1, ordrenummer = item.ordrenr })" style="color:black;">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </a>          
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prisPrEnhet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.detaljer)
+            </td>
+            <td>
+                <a href="@Url.Action("SlettOrdrer", "Ordre", new { ordrenummer = item.ordrenr })">Slett</a>
+            </td>
+   
+        </tr>
+       }
+       </table>
+      if (ViewBag.TotalPris != 0)
+      { 
+         <a href="@Url.Action("HandleVarer", "Ordre")" class="btn btn-success" style="float: right; margin-right: 50px;" >Kjøp</a>
+      } 
+      <h4 style="float: right; margin-right: 30px">Totalt: @ViewBag.TotalPris </h4>
+       <br />
+  }
+  else
+  {
+     <p>404 Not Found</p>
+  }
+  
+</body>
+</html>

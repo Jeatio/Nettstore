@@ -1,0 +1,148 @@
+﻿@model Nettbutikk.Model.PresentasjonsModel.displayVarer
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @if(Model != null)
+    {
+        <title>@Model.betegnelse</title>
+        
+    }
+    <script type="text/javascript">
+        $(function () {
+            $('modalKarusel').carousel({
+                interval: false
+            });
+        });
+    </script>
+    
+</head>
+<body>
+    @if (Model != null)
+    {
+      if (Model.bilde != null)
+      {
+        if (Model.bilde.Count() != 0)
+        {
+
+            var pic = Model.bilde.First();
+            <table>
+                <tr>
+                    <td width="400">
+                        <a href="#" data-toggle="modal" data-target="#Bildemod"><img id="setbilde" class="thumbnail" src="@(pic.src)" width="300px" heigth="300px" data-target="#modalKarusel" data-slide-to="0" /></a>
+                        <br />
+                        @{
+                            var i = 0;
+                            foreach (var item in Model.bilde)
+                            {
+                                <div class="container col-md-3">
+                                    <a class="thumbnail" data-toggle="modal" data-target="#Bildemod"><img src="@(item.src)" width="50px" heigth="50px" data-target="#modalKarusel" data-slide-to="@(i++)" /></a>
+                                </div>
+                            }
+                          }
+
+                       </td>
+                       <td height="310" width="310" valign="top">
+                                <p>Betegnelse: @Model.betegnelse</p>
+                                <p>Antall: @Model.antall</p>
+                                <h4>Pris: @Model.pris,-</h4>
+                                @if (Session["LoggetInn"] != null)
+                                {
+                                    @Html.ActionLink("Legg i Handlevogn", "VisHandlevogn", "Ordre", new { vareid = Model.idnr }, new { @class = "btn btn-success" });
+                                }
+                                else
+                                {
+                                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal" data-src="innlogging">
+                                        Legg i Handlevogn
+                                    </a>
+                                }
+                                <h3>Detaljer:</h3>
+                                <p>@Model.detaljer</p>
+                        </td>
+                   </tr>
+            </table>
+   
+                <!-- Modal -->
+                <div class="modal fade" id="Bildemod" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title" id="myModalLabel">@Model.betegnelse</h4>
+                            </div>
+                            <div class="modal-body">
+                                <!--Karusel start-->
+                                <div id="modalKarusel" class="carousel slide" style="background-color:black;">
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" id="test">
+                                        @{
+                                                var k = 0;
+                                                foreach (var item in Model.bilde)
+                                                {
+                                                    string tekst = "";
+                                                    if (k == 0)
+                                                    {
+                                                        tekst = "item active";
+                                                    }
+                                                    else
+                                                    {
+                                                        tekst = "item";
+                                                    }
+                                                    <div class="@(tekst)" align="center">
+                                                        <img src="@(item.src)" alt="bilde" width="300px">
+                                                        <div class="carousel-caption">
+                                                        </div>
+                                                    </div>
+                                                    k++;
+                                                }
+
+                                        }
+                                    </div>
+
+                                    <!-- Controls -->
+                                    <a class="left carousel-control" href="#modalKarusel" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                    </a>
+                                    <a class="right carousel-control" href="#modalKarusel" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </a>
+                                    <br />
+                                </div>
+                                <br />
+                                <br />
+                                <table align="center">
+                                    <tr>
+                                        @{
+                                            var j = 0;
+                                            foreach (var item in Model.bilde)
+                                            {
+                                                <td><a href="#" class="thumbnail" data-target="#modalKarusel" data-slide-to="@(j++)"><img src="@(item.src)" class="img-responsive" width="50px" height="50px"></a></td>
+                                            }
+                                        }
+                                    </tr>
+                                </table>
+                                <!--Karusel slutt-->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                            </div>
+                        </div>
+
+                        
+                  </div>
+             </div>
+    <!-- Modal slutt -->
+            }
+        }
+        
+
+    }
+    else
+    {
+        <p>404 page not found</p>
+    }
+
+
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+28.10.2014 13:13:16 /Vare med id: 2 ble flyttet til slettet kategoriUnderkategori: Skjermer ble fjernet fordi den ikke inneholdt varer. Kategori: Bruktble slettet fordi den ikke hadde underkategorier
+28.10.2014 13:13:16/En Vare med betegnelse Asus 21,5 LED  er blitt slettet
+28.10.2014 14:55:59/En Vare med betegnelse tastatur og mus er blitt opprettet
+28.10.2014 14:56:12 /Bilde: ../Images/Fritid/Ninebot N1U-1-2.jpg Har blitt knyttet til vare med id: 1 /Bilde: ../Images/Fritid/Ninebot N1U.jpg Har blitt knyttet til vare med id: 1
+29.10.2014 11:10:12 /Kunde med id hm@ya.no har endret: 
+29.10.2014 11:10:43 /Vare med betegnelse Asus 21,5 LED  har endret: underkategori, kategori, 
+29.10.2014 11:12:01/En Ansatt med brukernavn eksempel@hd.no er blitt opprettet
+29.10.2014 11:12:08/En Ansatt med brukernavn bruker@hd.no er blitt opprettet
+29.10.2014 11:12:17/En Ansatt med brukernavn hm@hd.no er blitt opprettet

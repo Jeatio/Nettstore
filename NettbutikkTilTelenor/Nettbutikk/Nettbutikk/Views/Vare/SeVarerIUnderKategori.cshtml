@@ -1,0 +1,48 @@
+﻿@model List<Nettbutikk.Model.PresentasjonsModel.fremvisningsvarer>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+        <title>Varer</title>
+    
+</head>
+
+<body>
+
+    @if (Model != null)
+    {
+        <div class="container-fluid panel-body">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 panel panel-default"  >
+                    <a href="@Url.Action("SeEnVare", "Vare", new { vareID = item.idnr })" style="color: black; text-decoration: none; margin-top:5px;">
+                         @if (item.visvarebilde != null)
+{
+    if (item.visvarebilde.Length != 0)
+    {
+        <img src="@(item.visvarebilde)" width="75%" style=" display:block; margin-left:auto; margin-right:auto;" />
+    }
+}
+                        <br />
+                        Produkt:  @Html.DisplayFor(modelItem => item.betegnelse)
+                        <br />
+                        Antall på lager:  @Html.DisplayFor(modelItem => item.antall)
+                        <br />
+                        Detaljer:  @Html.DisplayFor(modelItem => item.fremvisningsdetaljer)
+                        <br />
+                        <br />
+                        <div class="btn btn-success" style="float:right">Kjøp</div>
+                        <p style="font-size: 30px;"> @item.pris,-</p>
+
+                    </a>
+
+
+                </div>
+            }
+        </div>
+    }
+
+
+</body>
+</html>

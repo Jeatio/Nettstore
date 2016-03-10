@@ -1,0 +1,23 @@
+30.10.2014 15:02:42/En Ansatt med brukernavn bruker@hd.no er blitt slettet
+30.10.2014 15:28:39 /En kunde med id: per@oslo.no har blitt Opprettet
+04.11.2014 12:16:58 /En kunde med id: hm@ya.no har blitt Opprettet
+04.11.2014 12:18:38/En Ansatt med brukernavn eksempel@hd.no er blitt opprettet
+04.11.2014 12:18:44/En Ansatt med brukernavn bruker@hd.no er blitt opprettet
+04.11.2014 12:19:28/En Vare med betegnelse AOC 24 LED  Skjerm er blitt opprettet
+04.11.2014 12:19:47 /Bilde: ../Images/Skjermer/AOC 24 LED E2461FWH.jpg Har blitt knyttet til vare med id: 1 /Bilde: ../Images/Skjermer/AOC 24 LED E2461FWH1-2.jpg Har blitt knyttet til vare med id: 1 /Bilde: ../Images/Skjermer/AOC 24 LED E2461FWH1-3.jpg Har blitt knyttet til vare med id: 1
+04.11.2014 12:20:20 /Vare med id: 1 ble flyttet til slettet kategori Underkategori: Skjermer ble fjernet fordi den ikke inneholdt varer. Kategori: PC ble slettet fordi den ikke hadde underkategorier 
+04.11.2014 12:20:20/En Vare med betegnelse AOC 24 LED  Skjerm er blitt slettet
+04.11.2014 12:20:53 /Vare med betegnelse AOC 24 LED  Skjerm har endret: 
+05.11.2014 17:30:00 /En kunde med id: hm@ya.no har blitt Opprettet
+05.11.2014 17:33:17/En Vare med betegnelse AOC 24 LED  Skjerm er blitt opprettet
+05.11.2014 17:34:07/En Vare med betegnelse Minnekort er blitt opprettet
+05.11.2014 17:34:22 /Bilde: ../Images/Skjermer/AOC 24 LED E2461FWH.jpg Har blitt knyttet til vare med id: 1 /Bilde: ../Images/Skjermer/AOC 24 LED E2461FWH1-2.jpg Har blitt knyttet til vare med id: 1 /Bilde: ../Images/Skjermer/AOC 24 LED E2461FWH1-3.jpg Har blitt knyttet til vare med id: 1
+05.11.2014 17:34:30 /Bilde: ../Images/Minnekort/Samsung MicroSD PRO.jpg Har blitt knyttet til vare med id: 2 /Bilde: ../Images/Minnekort/Samsung MicroSD PRO1-2.jpg Har blitt knyttet til vare med id: 2
+12.11.2014 10:55:55 /En kunde med id: hm@ya.no har blitt Opprettet
+12.11.2014 10:58:04 /Kunde med id hm@ya.no har endret: 
+12.11.2014 10:58:36/En Vare med betegnelse AOC 24 LED  Skjerm er blitt opprettet
+12.11.2014 10:59:12/En Vare med betegnelse Minnekort er blitt opprettet
+12.11.2014 10:59:47 /Bilde: ../Images/Minnekort/Samsung MicroSD PRO.jpg Har blitt knyttet til vare med id: 2 /Bilde: ../Images/Minnekort/Samsung MicroSD PRO1-2.jpg Har blitt knyttet til vare med id: 2
+12.11.2014 10:59:57 /Bilde: ../Images/Skjermer/AOC 24 LED E2461FWH.jpg Har blitt knyttet til vare med id: 1 /Bilde: ../Images/Skjermer/AOC 24 LED E2461FWH1-2.jpg Har blitt knyttet til vare med id: 1 /Bilde: ../Images/Skjermer/AOC 24 LED E2461FWH1-3.jpg Har blitt knyttet til vare med id: 1
+12.11.2014 11:00:32/En Vare med betegnelse HTC One M8 er blitt opprettet
+12.11.2014 11:00:44 /Bilde: ../Images/Mobil/HTC One M8.jpg Har blitt knyttet til vare med id: 3 /Bilde: ../Images/Mobil/HTC One M81-2.jpg Har blitt knyttet til vare med id: 3 /Bilde: ../Images/Mobil/HTC One M81-3.jpg Har blitt knyttet til vare med id: 3

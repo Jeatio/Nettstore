@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nettbutikk", "Nettbutikk\Nettbutikk.csproj", "{9DFECAAA-0C3F-49D9-94C7-21C4AB31E70C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{B2DABDA2-E254-4604-BD0D-5A2DB9F946CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{E8F8885A-5245-48CD-81A6-3346DA594BA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{2BF82D5B-4E1D-4B69-9C1F-4A12C129D16C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enhetstest", "Enhetstest\Enhetstest.csproj", "{298D66FA-1521-4DE4-A5AC-70CF310D430E}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://dotnet.cs.hioa.no:8080/tfs/gruppe-04-14
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Nettbutikk\\Nettbutikk.csproj
+		SccProjectName1 = Nettbutikk
+		SccLocalPath1 = Nettbutikk
+		SccProjectUniqueName2 = DAL\\DAL.csproj
+		SccProjectName2 = DAL
+		SccLocalPath2 = DAL
+		SccProjectUniqueName3 = BLL\\BLL.csproj
+		SccProjectName3 = BLL
+		SccLocalPath3 = BLL
+		SccProjectUniqueName4 = Model\\Model.csproj
+		SccProjectName4 = Model
+		SccLocalPath4 = Model
+		SccProjectUniqueName5 = Enhetstest\\Enhetstest.csproj
+		SccProjectName5 = Enhetstest
+		SccLocalPath5 = Enhetstest
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DFECAAA-0C3F-49D9-94C7-21C4AB31E70C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DFECAAA-0C3F-49D9-94C7-21C4AB31E70C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DFECAAA-0C3F-49D9-94C7-21C4AB31E70C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DFECAAA-0C3F-49D9-94C7-21C4AB31E70C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2DABDA2-E254-4604-BD0D-5A2DB9F946CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2DABDA2-E254-4604-BD0D-5A2DB9F946CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2DABDA2-E254-4604-BD0D-5A2DB9F946CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2DABDA2-E254-4604-BD0D-5A2DB9F946CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8F8885A-5245-48CD-81A6-3346DA594BA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8F8885A-5245-48CD-81A6-3346DA594BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8F8885A-5245-48CD-81A6-3346DA594BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8F8885A-5245-48CD-81A6-3346DA594BA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BF82D5B-4E1D-4B69-9C1F-4A12C129D16C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF82D5B-4E1D-4B69-9C1F-4A12C129D16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF82D5B-4E1D-4B69-9C1F-4A12C129D16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF82D5B-4E1D-4B69-9C1F-4A12C129D16C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{298D66FA-1521-4DE4-A5AC-70CF310D430E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{298D66FA-1521-4DE4-A5AC-70CF310D430E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{298D66FA-1521-4DE4-A5AC-70CF310D430E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{298D66FA-1521-4DE4-A5AC-70CF310D430E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

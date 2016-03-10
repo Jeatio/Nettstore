@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2BF82D5B-4E1D-4B69-9C1F-4A12C129D16C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DomeneModel\ordre.cs" />
+    <Compile Include="PresentasjonsModel\ansatt.cs" />
+    <Compile Include="PresentasjonsModel\betaling.cs" />
+    <Compile Include="PresentasjonsModel\bilde.cs" />
+    <Compile Include="PresentasjonsModel\bilderimappe.cs" />
+    <Compile Include="PresentasjonsModel\displayVarer.cs" />
+    <Compile Include="PresentasjonsModel\endreKunde.cs" />
+    <Compile Include="PresentasjonsModel\endrePassord.cs" />
+    <Compile Include="PresentasjonsModel\endreVare.cs" />
+    <Compile Include="PresentasjonsModel\faqPresentasjon.cs" />
+    <Compile Include="PresentasjonsModel\faqSettInn.cs" />
+    <Compile Include="PresentasjonsModel\fremvisningsvarer.cs" />
+    <Compile Include="PresentasjonsModel\innlogging.cs" />
+    <Compile Include="PresentasjonsModel\kategori.cs" />
+    <Compile Include="PresentasjonsModel\kunde.cs" />
+    <Compile Include="PresentasjonsModel\minProfil.cs" />
+    <Compile Include="PresentasjonsModel\underKategori.cs" />
+    <Compile Include="PresentasjonsModel\vare.cs" />
+    <Compile Include="PresentasjonsModel\visallekvitteringer.cs" />
+    <Compile Include="PresentasjonsModel\visBilde.cs" />
+    <Compile Include="PresentasjonsModel\viskvittering.cs" />
+    <Compile Include="PresentasjonsModel\visordre.cs" />
+    <Compile Include="PresentasjonsModel\visOrdreAdmin.cs" />
+    <Compile Include="PresentasjonsModel\visVareInfo.cs" />
+    <Compile Include="PresentasjonsModel\visVarerAdmin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,109 @@
+System.ArgumentException: Path cannot be the empty string or all whitespace.
+Parameter name: path2
+   at System.IO.Path.InternalCombine(String path1, String path2)
+   at System.IO.DirectoryInfo.CreateSubdirectoryHelper(String path, Object directorySecurity)
+   at System.IO.DirectoryInfo.CreateSubdirectory(String path)
+   at Nettbutikk.DAL.VareRepository.lastOppBilder(HttpPostedFileBase[] file, String mappe) in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\VareRepository.cs:line 645
+System.ArgumentException: Path cannot be the empty string or all whitespace.
+Parameter name: path2
+   at System.IO.Path.InternalCombine(String path1, String path2)
+   at System.IO.DirectoryInfo.CreateSubdirectoryHelper(String path, Object directorySecurity)
+   at System.IO.DirectoryInfo.CreateSubdirectory(String path)
+   at Nettbutikk.DAL.VareRepository.lastOppBilder(HttpPostedFileBase[] file, String mappe) in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\VareRepository.cs:line 645
+System.ArgumentException: Path cannot be the empty string or all whitespace.
+Parameter name: path2
+   at System.IO.Path.InternalCombine(String path1, String path2)
+   at System.IO.DirectoryInfo.CreateSubdirectoryHelper(String path, Object directorySecurity)
+   at System.IO.DirectoryInfo.CreateSubdirectory(String path)
+   at Nettbutikk.DAL.VareRepository.lastOppBilder(HttpPostedFileBase[] file, String mappe) in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\VareRepository.cs:line 645
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Nettbutikk.DAL.FAQRepository.settInnSporsmal(faqSettInn innFAQ) in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\FAQRepository.cs:line 113
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Nettbutikk.DAL.FAQRepository.settInnSporsmal(faqSettInn innFAQ) in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\FAQRepository.cs:line 113
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Nettbutikk.DAL.FAQRepository.settInnSporsmal(faqSettInn innFAQ) in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\FAQRepository.cs:line 113
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Nettbutikk.DAL.FAQRepository.settInnSporsmal(faqSettInn innFAQ) in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\FAQRepository.cs:line 113
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Nettbutikk.DAL.FAQRepository.settInnSporsmal(faqSettInn innFAQ) in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\FAQRepository.cs:line 113
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Nettbutikk.DAL.FAQRepository.settInnSporsmal(faqSettInn innFAQ) in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\FAQRepository.cs:line 113
+System.ArgumentException: Path cannot be the empty string or all whitespace.
+Parameter name: path2
+   at System.IO.Path.InternalCombine(String path1, String path2)
+   at System.IO.DirectoryInfo.CreateSubdirectoryHelper(String path, Object directorySecurity)
+   at System.IO.DirectoryInfo.CreateSubdirectory(String path)
+   at Nettbutikk.DAL.VareRepository.lastOppBilder(HttpPostedFileBase[] file, String mappe) in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\VareRepository.cs:line 645
+System.ArgumentException: Path cannot be the empty string or all whitespace.
+Parameter name: path2
+   at System.IO.Path.InternalCombine(String path1, String path2)
+   at System.IO.DirectoryInfo.CreateSubdirectoryHelper(String path, Object directorySecurity)
+   at System.IO.DirectoryInfo.CreateSubdirectory(String path)
+   at Nettbutikk.DAL.VareRepository.lastOppBilder(HttpPostedFileBase[] file, String mappe) in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\VareRepository.cs:line 645
+System.ArgumentException: Path cannot be the empty string or all whitespace.
+Parameter name: path2
+   at System.IO.Path.InternalCombine(String path1, String path2)
+   at System.IO.DirectoryInfo.CreateSubdirectoryHelper(String path, Object directorySecurity)
+   at System.IO.DirectoryInfo.CreateSubdirectory(String path)
+   at Nettbutikk.DAL.VareRepository.lastOppBilder(HttpPostedFileBase[] file, String mappe) in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\VareRepository.cs:line 645
+System.Data.SqlClient.SqlException (0x80131904): Cannot create file 'C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\Nettbutikk\App_Data\NettbutikkDB.mdf' because it already exists. Change the file path or the file name, and retry the operation.
+CREATE DATABASE failed. Some file names listed could not be created. Check related errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<NonQuery>b__0(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.NonQuery(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.SqlServer.SqlProviderServices.<>c__DisplayClass1a.<CreateDatabaseFromScript>b__19(DbConnection conn)
+   at System.Data.Entity.SqlServer.SqlProviderServices.UsingConnection(DbConnection sqlConnection, Action`1 act)
+   at System.Data.Entity.SqlServer.SqlProviderServices.UsingMasterConnection(DbConnection sqlConnection, Action`1 act)
+   at System.Data.Entity.SqlServer.SqlProviderServices.CreateDatabaseFromScript(Nullable`1 commandTimeout, DbConnection sqlConnection, String createDatabaseScript)
+   at System.Data.Entity.SqlServer.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   at System.Data.Entity.Core.Common.DbProviderServices.CreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   at System.Data.Entity.Core.Objects.ObjectContext.CreateDatabase()
+   at System.Data.Entity.Migrations.Utilities.DatabaseCreator.Create(DbConnection connection)
+   at System.Data.Entity.Migrations.DbMigrator.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   at System.Data.Entity.Migrations.Infrastructure.MigratorBase.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   at System.Data.Entity.Migrations.DbMigrator.Update(String targetMigration)
+   at System.Data.Entity.Migrations.Infrastructure.MigratorBase.Update()
+   at System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)
+   at System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext, DatabaseExistenceState existenceState)
+   at System.Data.Entity.Database.CreateIfNotExists()
+   at Nettbutikk.DAL.NettbutikkDB..ctor() in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\NettbutikkDB.cs:line 146
+   at Nettbutikk.DAL.VareRepository.hentAlleKategorier() in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\VareRepository.cs:line 312
+ClientConnectionId:e34369ae-9ab7-40f5-88c4-03ab92520551
+System.Data.SqlClient.SqlException (0x80131904): Cannot create file 'C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\Nettbutikk\App_Data\NettbutikkDB.mdf' because it already exists. Change the file path or the file name, and retry the operation.
+CREATE DATABASE failed. Some file names listed could not be created. Check related errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<NonQuery>b__0(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.NonQuery(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.SqlServer.SqlProviderServices.<>c__DisplayClass1a.<CreateDatabaseFromScript>b__19(DbConnection conn)
+   at System.Data.Entity.SqlServer.SqlProviderServices.UsingConnection(DbConnection sqlConnection, Action`1 act)
+   at System.Data.Entity.SqlServer.SqlProviderServices.UsingMasterConnection(DbConnection sqlConnection, Action`1 act)
+   at System.Data.Entity.SqlServer.SqlProviderServices.CreateDatabaseFromScript(Nullable`1 commandTimeout, DbConnection sqlConnection, String createDatabaseScript)
+   at System.Data.Entity.SqlServer.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   at System.Data.Entity.Core.Common.DbProviderServices.CreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   at System.Data.Entity.Core.Objects.ObjectContext.CreateDatabase()
+   at System.Data.Entity.Migrations.Utilities.DatabaseCreator.Create(DbConnection connection)
+   at System.Data.Entity.Migrations.DbMigrator.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   at System.Data.Entity.Migrations.Infrastructure.MigratorBase.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   at System.Data.Entity.Migrations.DbMigrator.Update(String targetMigration)
+   at System.Data.Entity.Migrations.Infrastructure.MigratorBase.Update()
+   at System.Data.Entity.Internal.DatabaseCreator.CreateDatabase(InternalContext internalContext, Func`3 createMigrator, ObjectContext objectContext)
+   at System.Data.Entity.Internal.InternalContext.CreateDatabase(ObjectContext objectContext, DatabaseExistenceState existenceState)
+   at System.Data.Entity.Database.CreateIfNotExists()
+   at Nettbutikk.DAL.NettbutikkDB..ctor() in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\NettbutikkDB.cs:line 146
+   at Nettbutikk.DAL.VareRepository.hentAlleKategorier() in c:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\VareRepository.cs:line 312
+ClientConnectionId:98536a8d-7b5d-47b9-b84b-2b8fc4a6248f
+Error Number:5170,State:1,Class:16

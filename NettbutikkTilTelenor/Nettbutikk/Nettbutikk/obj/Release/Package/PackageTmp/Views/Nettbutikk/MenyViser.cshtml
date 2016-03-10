@@ -1,0 +1,58 @@
+﻿@model List<Nettbutikk.Model.PresentasjonsModel.kategori>
+@{
+    Layout = null;
+}
+
+ @if (Model != null)
+ {
+     var i = -1;
+     var j = -1;
+     if (Session["AktivKat"] != null)
+     {
+         i = (int)Session["AktivKat"];
+         Session["AktivKat"] = null;
+     }
+     if (Session["AktivUnderKat"] != null)
+     {
+         j = (int)Session["AktivUnderKat"];
+         Session["AktivUnderKat"] = null;
+     }
+    foreach (var k in Model)
+    { 
+            if (i == k.kategorinr) 
+            { 
+                <a class="list-group-item" style="background-color: #222; color: #D9971F; " href="@Url.Action("SeVarerIKategori", "Vare", new { kat= k.kategorinr})">
+                    <span class="glyphicon glyphicon-hand-right" style="font-weight:bolder;"> @k.kategorinavn</span>
+                </a>
+            }
+            else
+            {
+                <a class="list-group-item" style="background-color: #222; color: #D9971F; " href="@Url.Action("SeVarerIKategori", "Vare", new { kat= k.kategorinr})">
+                    <span style="font-weight:bolder;">@k.kategorinavn</span>
+                </a>
+            }
+            if (k.underkat != null)
+            {
+                foreach (var u in k.underkat)
+                {
+                    if (j == u.id)
+                    {
+                        <a class="list-group-item" style="background-color: #f5f5f5;" href="@Url.Action("SeVarerIUnderKategori", "Vare", new { underkat = u.id, i = u.id })">
+                            <span class="glyphicon glyphicon-hand-right" style="font-style: italic;"> @u.navn</span>
+                        </a>
+                    }
+                    else
+                    { 
+                        <a class="list-group-item" style="background-color:#f5f5f5;" href="@Url.Action("SeVarerIUnderKategori", "Vare", new { underkat = u.id, i = u.id })">
+                            <span style="font-style: italic;"> @u.navn</span>
+                        </a>
+                    }
+              }
+          }
+     }
+}
+ else
+ {
+     <p>Ingen Kategorier</p>
+ }
+

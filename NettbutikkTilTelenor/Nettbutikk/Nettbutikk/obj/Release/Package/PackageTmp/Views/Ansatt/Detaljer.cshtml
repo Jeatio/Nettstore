@@ -1,0 +1,64 @@
+﻿@model Nettbutikk.Model.PresentasjonsModel.minProfil
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detaljer</title>
+</head>
+<body>
+    <div class="container-fluid">
+        @if (Model != null)
+        {
+
+
+            <table style="font-size:1.2em;" class="glyphicon glyphicon-user ">
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">Fornavn </label> </td>
+                    <td class="pull-left" style="margin-left:20px">@Model.fornavn </td>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">Etternavn</label></td>
+                    <td class="pull-left" style="margin-left:20px">@Model.etternavn</td>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">Adresse</label></td>
+                    <td class="pull-left" style="margin-left:20px">@Model.adresse</td>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">TelefonNummer</label></td>
+                    <td class="pull-left" style="margin-left:20px">@Model.telefonnummer</td>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">Epostadresse</label></td>
+                    <td class="pull-left" style="margin-left:20px">@Model.epostadresse</td>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">Poststed</label></td>
+                    <td class="pull-left" style="margin-left:20px">@Model.poststeder</td>
+                </tr>
+                <tr>
+                    <td><label class="pull-left">PostNr</label></td>
+                    <td class="pull-left" style="margin-left:20px">@Model.postnr</td>
+                </tr>
+
+            </table>
+            <br />
+            <br />
+
+        }
+    </div>
+        
+
+
+</body>
+</html>

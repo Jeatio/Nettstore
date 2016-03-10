@@ -1,0 +1,57 @@
+﻿@model List<Nettbutikk.Model.PresentasjonsModel.viskvittering>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Kvittering</title>
+</head>
+<body>
+    
+    @if (Model != null)
+    {
+        <h2>Kvittering @Model.First().dato</h2>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].betegnelse)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].antall)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].prisPrEnhet)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].detaljer)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.betegnelse)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.antall)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.prisPrEnhet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.detaljer)
+                    </td>
+                </tr>
+            }
+        </table>
+        <a href="@Url.Action("VisAlleKvitteringer", "Ordre")" class="btn btn-default" style="float: right; margin-right: 50px;">Tilbake</a>
+        <h4 style="float: right; margin-right: 30px">Totalt: @Model.First().totpris </h4>
+        <br />
+    }
+    else
+    {
+        <p>404 Not Found</p>
+    }
+
+</body>
+</html>

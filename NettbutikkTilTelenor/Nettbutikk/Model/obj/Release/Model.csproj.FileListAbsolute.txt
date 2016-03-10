@@ -1,0 +1,5 @@
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\Model\bin\Release\Model.dll
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\Model\bin\Release\Model.pdb
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\Model\obj\Release\Model.csprojResolveAssemblyReference.cache
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\Model\obj\Release\Model.dll
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\Model\obj\Release\Model.pdb

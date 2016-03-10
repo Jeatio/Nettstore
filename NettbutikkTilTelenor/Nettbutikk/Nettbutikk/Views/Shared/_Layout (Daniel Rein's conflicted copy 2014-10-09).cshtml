@@ -1,0 +1,167 @@
+﻿    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nettbutikken</title>
+        <script src="~/Scripts/jquery-2.1.1.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+        <script src="~/Scripts/bootstrap.js"></script>
+        <link href="~/Content/Sidebar.css" rel="stylesheet" />
+
+    </head>
+    <body>
+
+        <div class="panel-body container-fluid backCollor">
+
+            <!-- nav menu bar start -->
+
+            <div class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    @Html.ActionLink("HD-Elektronikk", "Index", "Nettbutikk", new { tom = "" }, new { @class = "navbar-brand" })
+
+                </div>
+                <div class="navbar-collapse navbar-inverse-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("OpprettVare", "OpprettVare", "Nettbutikk")</li>
+                    </ul>
+                        <form class="navbar-form navbar-left ">
+                            <input type="text" class="form-control col-lg-8" placeholder="Søk etter vare" onchange="server">
+                        </form>
+                        <ul class="nav navbar-nav navbar-right">
+
+                            @if (Session["LoggetInn"] != null)
+                            {
+                                <li>
+                                    <a href="@Url.Action("VisHandlevogn", "Nettbutikk", new {vareid = 0 })"><span class="glyphicon glyphicon-shopping-cart">Handlevogn</span></a>
+                                </li>
+                                <li class="dropdown">
+
+                                    <a href="@Url.Action("MinProfil", "Nettbutikk")" class="dropdown-toggle" data-toggle="dropdown">
+                                        Min Profil
+                                        <b class="caret"></b>
+                                    </a>
+
+                                    <ul class="dropdown-menu toggled">
+                                        <li>
+                                            <a href="@Url.Action("MinProfil", "Nettbutikk")"><span class="glyphicon glyphicon-user">Min Profil</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("VisAlleKvitteringer", "Nettbutikk")"><span class="glyphicon glyphicon-list">Vis Kviteringer</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("VisHandlevogn", "Nettbutikk", new { vareid = 0})"><span class="glyphicon glyphicon-shopping-cart">Handlevogn</span></a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            @Html.ActionLink("Logg Ut", "LoggUt", "Nettbutikk")
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            <li>
+                                @if (Session["LoggetInn"] != null)
+                                {
+                                    @Html.ActionLink("Logg Ut", "LoggUt", "Nettbutikk")
+
+
+                                }
+                                else
+                                {
+                        <!-- Knapp til å starte modal -->
+                                    <a href="#" data-toggle="modal" data-target="#myModal" data-src="innlogging">
+                                        Registrer/Logg Inn
+                                    </a>
+                                }
+                            </li>
+                        </ul>
+</div>
+            </div>
+            <!-- nav menu bar slutt"-->
+
+
+
+            <br />
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel"></h4>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <div id="opprettK" align="left">
+                                <h3>Ny kunde? Registrer deg her:</h3>
+                                <a href="#" data-src="registrer">
+                                    Opprett bruker
+                                </a>
+                            </div>
+                            <br />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal slutt -->
+            @Html.Action("MenyViser")
+
+                                    @RenderBody()
+                                    <div id="customFooter">
+
+                                        <footer class="bottom-right">
+                                            <p> &copy;@DateTime.Now.Year -HiOA HD-Elektronikk <p>
+                                        </footer>
+                                    </div>
+       
+       
+                                
+
+            <script>
+           
+                $('a[data-src=innlogging]').on('click', function (e) {
+                    e.preventDefault();
+                    $('.modal-body').load("@Url.Action("LoggInn" , "Nettbutikk" )");
+                    $('#opprettK').show();
+                });
+
+                $('a[data-src=registrer]').on('click', function (e) {
+                    e.preventDefault();
+                    $('.modal-body').load("@Url.Action("OpprettKunde" , "Nettbutikk" )");
+                    $('#opprettK').hide();
+                });
+
+                $('a[data-meny=1]').on('click', function () {
+
+                })
+
+                $("#aktiv").on("click", "li", function () {
+                    var $this = $(this);
+                    $this.addClass("active")
+                    .prependTo($this.parent())
+                    .siblings().removeClass("active");
+                });
+
+            </script>
+
+        </div>
+
+
+
+    </body>
+
+</html>

@@ -1,0 +1,60 @@
+﻿@model List<Nettbutikk.Model.PresentasjonsModel.fremvisningsvarer>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListAlleVarer</title>
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/Sidebar.css" rel="stylesheet" />
+</head>
+<body>
+    
+      @if (Model != null)
+      {
+        <div class="container-fluid panel-body">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 panel panel-default" >
+                    <br />
+                    <a href="@Url.Action("SeEnVare", "Vare", new { vareID = item.idnr })" style="color: black; text-decoration: none; margin-top:5px;">
+                        @if (item.visvarebilde != null)
+                        {
+                            if (item.visvarebilde.Length != 0)
+                            {
+                                <img src="@(item.visvarebilde)" width="75%" style=" display:block; margin-left:auto; margin-right:auto;" />
+                            }
+                        }
+                        <br />
+                        Produkt:  @Html.DisplayFor(modelItem => item.betegnelse)
+                        <br />
+                        Antall på lager:  @Html.DisplayFor(modelItem => item.antall)
+                        <br />
+                        Detaljer:  @item.fremvisningsdetaljer
+                        <br />
+                        <br />
+                        <div class="btn btn-success" style="float:right">Kjøp</div>
+                        <p style="font-size: 30px;" > @item.pris,-</p>
+                     </a>
+                  </div>
+        }
+        </div>
+   }
+   else
+      {
+          <p>404 page not found</p>
+      }
+
+        
+</body>
+</html>

@@ -1,0 +1,218 @@
+﻿@model List<Nettbutikk.Model.PresentasjonsModel.minProfil>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListKunder</title>
+    <link href="~/Content/datatable.css" rel="stylesheet" />
+    <script src="~/Scripts/dataTable.js"></script>
+    <script src="~/Scripts/bootstrapDataTable.js"></script>
+
+
+
+</head>
+<body style="font-size:140%">
+
+    <p class="pull-right">
+        <a href="#" class="btn btn-info" data-toggle="modal" data-target="#myModal"data-src="registrer" id="regK">Opprett Ny Kunde</a>
+    </p>
+    <div>
+     
+            <input type="search" id="kundeSok" class="form input-lg" placeholder="Søk etter Kunde" />
+
+        <select class="input-lg" id="velgList" onchange="window.location.href=this.value">
+            <option value="@Url.Action("ListKunder","Ansatt")">Kunder</option>
+            <option value="@Url.Action("ListKvitteringer","Ansatt")">Kvittering</option>
+            <option value="@Url.Action("ListVarer","Ansatt")">Varer</option>
+            @if(((Nettbutikk.Model.PresentasjonsModel.ansatt)Session["ErAdmin"]).eradmin)
+            {
+                <option value="@Url.Action("ListAnsatte","Ansatt")">Ansatt</option>
+            }
+        </select>
+        @if(Model != null)
+            {      
+            
+        
+        <table id="kundeliste" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model[0].epostadresse)</th>
+                    <th>@Html.DisplayNameFor(model => model[0].fornavn) </th>
+                    <th>@Html.DisplayNameFor(model => model[0].etternavn) </th>
+                    <th>@Html.DisplayNameFor(model => model[0].telefonnummer) </th>
+                    <th>@Html.DisplayNameFor(model => model[0].adresse)</th>
+                    <th>@Html.DisplayNameFor(model => model[0].poststeder)</th>
+                    <th>@Html.DisplayNameFor(model => model[0].postnr) </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var k in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => k.epostadresse)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => k.fornavn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => k.etternavn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => k.telefonnummer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => k.adresse)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => k.poststeder)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => k.postnr)
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-primary" data-id="@k.epostadresse" data-toggle="modal" data-target="#detaljer" data-src="detalj">Detaljer</a>
+                                <a href="#" class="btn btn-danger"data-id="@k.epostadresse" data-toggle="modal" data-target="#slettModal" data-src="slette" id="slettId">Slett</a>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+
+
+        </table>
+    } 
+    </div>
+    <!-- Modal Detaljer -->
+    <div class="modal fade" id="detaljer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Detaljer</h4>
+                </div>
+                <div class="modal-body" id="kunde">
+
+                </div>
+                <div class="modal-footer">       
+                    <div id="endremeny">
+                        <a href="#" class="btn btn-danger pull-left"  data-src="slette" data-toggle="modal" data-target="#slettModal" id="slettId">Slett</a>
+                        <a href="#" class="btn btn-primary pull-left" data-src="endre"  data-target="#detaljer" id="endreId">Endre</a>
+                        
+                    </div>            
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal slutt -->
+
+    <!-- Modal Slett -->
+    <div class="modal fade" id="slettModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Sikker ?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Vennligst bekreft SLETTING </p>
+                    <div class="text-danger"id="slettKunde">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-danger" data-id="" data-src="slett"data-dismiss="modal" id="sletteModalKnapp">Slett</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal slutt -->
+
+
+
+    <script>
+        $(document).ready(function () {
+            var husk = "";
+            oTable = $('#kundeliste').dataTable();
+            $('#kundeSok').keyup(function () {
+                oTable.fnFilter($(this).val());
+            });
+
+            $('a[data-src=detalj]').on('click', function () {
+               
+                var epost = $(this).data('id');
+
+                husk = epost;
+                $.ajax({
+                    url: '@Url.Action("Detaljer" , "Ansatt" )',
+                    data: { email: epost },
+                    success: function (det) {
+                        document.getElementById('kunde').innerHTML = det;
+                        $('.modal-body').load();                     
+
+                        $('#endremeny').show();
+                        
+                    }
+                });
+            });
+            $('a[data-src=slette]').on('click', function () {
+                var epost = $(this).data('id');
+                if (epost == undefined)
+                    epost = husk;
+                $('#slettKunde').html(epost);
+            });
+            $('a[data-src=slett]').on('click', function () {              
+               
+                var epost = $('#slettKunde').html();
+               
+                $.ajax({
+                    url: '@Url.Action("Slett","Ansatt")',
+                    data: { email: epost },
+                    success: function (e) {
+                        
+                        $.ajax({
+                            url: '@Url.Action("ListKunder","Ansatt")',
+                            success: function () {
+                                window.location.reload();
+                            }
+                        });
+                    }               
+                });
+            });
+
+            $('a[data-src=endre]').on('click', function () {
+                var epost = husk;
+                
+                $.ajax({
+                    url: '@Url.Action("EndreKunde", "Ansatt")',
+                    data: { email: husk },
+                    success: function (det) {
+                        document.getElementById('kunde').innerHTML = det;
+                        $('kunde').load();
+                        $('#endremeny').hide();
+                       
+                    }
+                });
+            });
+            
+            $('#regK').on('click', function () {
+                $('#regLogg').hide();
+            });
+
+        });
+
+    </script>
+
+    
+</body>
+</html>

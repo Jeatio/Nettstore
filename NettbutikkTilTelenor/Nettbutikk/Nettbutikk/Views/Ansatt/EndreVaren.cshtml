@@ -1,0 +1,251 @@
+﻿@model Nettbutikk.Model.PresentasjonsModel.endreVare
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EndreVaren</title>
+</head>
+<body>
+    <h3>Endre Vare</h3>
+    <div class="body-content panel-body">
+        @if (Model != null)
+        {
+            if (Model.bilde != null)
+            {
+                if (Model.bilde.Count() != 0)
+                {
+                    foreach (var item in Model.bilde)
+                    {
+                        <div class="col-md-4 panel panel-default">
+                            <a class="btn-xs btn-danger" style="cursor:pointer; float:right; " onclick="fjernBilde(@Model.idnr, @item.id)"><span class="glyphicon glyphicon-remove" style="color:white;"></span></a>
+                            <img src="@item.src" width="50%" style=" display:block; margin-left:auto; margin-right:auto;" />
+                        </div>
+                    }
+                }
+            }
+        }
+     </div>
+        <div class="body-content panel-body">
+            <div class="panel panel-body">
+                <div class="panel-group">
+
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "endreVaren" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal ">
+                            @Html.HiddenFor(model => model.idnr)
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.betegnelse, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @Html.EditorFor(model => model.betegnelse, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.betegnelse, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.antall, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @Html.EditorFor(model => model.antall, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.antall, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.pris, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @Html.EditorFor(model => model.pris, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.pris, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fremvisningsdetaljer, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @Html.EditorFor(model => model.fremvisningsdetaljer, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.fremvisningsdetaljer, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.detaljer, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.TextAreaFor(model => model.detaljer, new { htmlAttributes = new { @class = "form-control col-md-6", @id = "detalje" } })
+                                    @Html.ValidationMessageFor(model => model.detaljer, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            @if (Model.katnavn == "Slettet")
+                            {
+                                 <div class="form-group">
+                                    <div class="col-md-6">
+                                        <p style="color:red;">Varen er slettet, endre Kategori for å gjøre varen tilgjengelig igjen</p>
+                                    </div>
+                                </div>
+                            }
+                            <div class="form-group">
+                                <span class="control-label col-md-2"><b>Kategori</b></span>
+                                <div class="col-md-3">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownKat" data-toggle="dropdown">
+                                        <div id="Valg">
+                                            @Model.katnavn
+                                            <span class="caret"></span>
+                                        </div>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+                                        @foreach (var kat in (List<Nettbutikk.Model.PresentasjonsModel.kategori>)ViewBag.Kategorier)
+                                        {
+                                            <li role="presentation"><a role="menuitem" onclick="valgtKategori(@(kat.kategorinr),'@(kat.kategorinavn)')" tabindex="-1" style="cursor:pointer;">@kat.kategorinavn</a></li>
+                                        }
+                                    </ul>
+                                    @Html.EditorFor(model => model.katnavn, new { htmlAttributes = new { @class = "form-control", @id = "nyKategori", @style = "display:none;" } })
+                                    @Html.ValidationMessageFor(model => model.katnavn, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.katid, new { htmlAttributes = new { @class = "form-control", @id = "katIdnr", @style = "display:none;" } })
+                                </div>
+                                <div class="col-md-3"><a style="cursor:pointer;" onclick="nyKategori()" id="leggInnKat">Ny Kategori</a></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="control-label col-md-2"><b>Underkategori</b></span>
+                                <div class="col-md-3">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownUkat" onclick="setUnderkat()" data-toggle="dropdown">
+                                        <div id="uKatValg">
+                                            @Model.underkatnavn
+                                            <span class="caret"></span>
+                                        </div>
+                                    </button>
+                                    <ul class="dropdown-menu" id="underkategorier" role="menu" aria-labelledby="dropdownMenu3">
+                                        @foreach (var kat in (List<Nettbutikk.Model.PresentasjonsModel.kategori>)ViewBag.Kategorier)
+                                        {
+                                            foreach (var uKat in kat.underkat)
+                                            {
+                                                <li role="presentation" title="@(kat.kategorinavn)"><a role="menuitem" onclick="valgtUnderKategori(@(uKat.id),'@(uKat.navn)')" tabindex="-1" style="cursor:pointer;">@uKat.navn</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                    @Html.EditorFor(model => model.underkatnavn, new { htmlAttributes = new { @class = "form-control", @id = "nyUkategori", @style = "display:none;" } })
+                                    @Html.ValidationMessageFor(model => model.underkatnavn, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.underkatid, new { htmlAttributes = new { @class = "form-control", @id = "uKatIdnr", @style = "display:none;" } })
+                                </div>
+                                <div class="col-md-3"><a style="cursor:pointer;" onclick="nyUkategori()" id="leggInnUkat">Ny UnderKategori</a></div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <a href="@Url.Action("ListVarer","Ansatt")" class="btn btn-primary">Tilbake</a>
+                                    <a href="#" class="btn btn-success" onclick="lagreVare()">Lagre</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $('textarea').autosize();
+            });
+
+            var valgtKat = "@(Model.katnavn)";
+            function valgtKategori(katNr, katnavn) {
+                valgtKat = katnavn;
+                $('#katIdnr').val(katNr);
+                document.getElementById('Valg').innerHTML = katnavn + " <span class=\"caret\"></span>";
+                document.getElementById('uKatValg').innerHTML = "Velg Underkategori <span class=\"caret\"></span>";
+                $('#uKatIdnr').val("");
+            }
+            function setUnderkat() {
+                var lis = document.getElementById("underkategorier").getElementsByTagName("li");
+                if (valgtKat != "") {
+                    for (var i = 0; i < lis.length; i++) {
+                        if (lis[i].title != valgtKat) {
+                            $(lis[i]).addClass('hidden');
+                        }
+                        else {
+                            $(lis[i]).removeClass();
+                        }
+                    }
+                }
+                else {
+                    for (var i = 0; i < lis.length; i++) {
+                        $(lis[i]).addClass('hidden');
+                    }
+                }
+            }
+            function valgtUnderKategori(uKatNr, uKatnavn) {
+                document.getElementById('uKatValg').innerHTML = uKatnavn + " <span class=\"caret\"></span>";
+                $('#uKatIdnr').val(uKatNr);
+            }
+            function nyKategori() {
+                if ($('#dropdownKat').is(":visible")) {
+                    $('#nyKategori').show();
+                    $('#nyUkategori').show();
+                    $('#dropdownKat').hide();
+                    $('#dropdownUkat').hide();
+                    $('#leggInnUkat').hide();
+                    $('#katIdnr').val(0);
+                    $('#uKatIdnr').val(0);
+                    document.getElementById('leggInnKat').innerHTML = "Bruk eksisterende";
+                }
+                else {
+                    $('#nyKategori').hide();
+                    $('#nyUkategori').hide();
+                    $('#dropdownKat').show();
+                    $('#dropdownUkat').show();
+                    $('#leggInnUkat').show();
+                    document.getElementById('leggInnKat').innerHTML = "Ny Kategori";
+                    $('#nyKategori').val("");
+                    $('#nyUkategori').val("");
+                }
+            }
+            function nyUkategori() {
+                if ($('#dropdownUkat').is(":visible")) {
+                    $('#dropdownUkat').hide();
+                    $('#nyUkategori').show();
+                    $('#leggInnKat').hide();
+                    $('#uKatIdnr').val(0);
+                    document.getElementById('leggInnUkat').innerHTML = "Bruk eksisterende";
+                }
+                else {
+                    $('#dropdownUkat').show();
+                    $('#nyUkategori').hide();
+                    $('#leggInnKat').show();
+                    $('#nyUkategori').val("");
+                    document.getElementById('leggInnUkat').innerHTML = "Ny UnderKategori";
+                }
+            }
+
+            function lagreVare() {
+                if ($('#katIdnr').val() == "" || $('#uKatIdnr').val() == "") {
+
+                }
+                else {
+                    if ($('#nyKategori').is(":hidden")) {
+                        $('#nyKategori').val("tom");
+                    }
+                    if ($('#nyUkategori').is(":hidden")) {
+                        $('#nyUkategori').val("tom");
+                    }
+                    $("#endreVaren").submit();
+                }
+            }
+
+            function fjernBilde(vareId, bildeId) {
+                $.ajax({
+                    url: '@Url.Action("fjernBildeFraVare", "Ansatt")',
+                    data: { idVare: vareId, idBilde: bildeId },
+                    success: function (OK) {
+                        if (OK == "True") {
+                            window.location.reload();
+                        }
+                    }
+
+                });
+            }
+
+        </script>
+
+</body>
+</html>

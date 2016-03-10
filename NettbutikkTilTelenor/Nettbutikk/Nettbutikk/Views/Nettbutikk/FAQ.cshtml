@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html ng-app="App">
+<head>
+
+    
+    <script src="~/Scripts/LibJ/angular.js"></script>
+    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+   
+   
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+  
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+
+
+    <link href="~/Content/datatable.css" rel="stylesheet" />
+    <script src="~/Scripts/dataTable.js"></script>
+    <script src="~/Scripts/LibJ/angular-datatables.js"></script>
+
+    <script src="~/Scripts/App/FAQController.js"></script>
+    <title></title>
+
+</head>
+<body>
+    <div ng-controller="FAQController">
+        <div class="h3 col-md-12 col-md-offset-2"><span class="glyphicon glyphicon-globe"></span> FAQ</div>
+        <div ng-show="sidemeny" class="pull-right col-md-3">
+            <div class="panel panel-info text-info" style="background-color:aliceblue;">
+                <form role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control col-lg-8" placeholder="Søk på spørsmål" id="sokSporsmal" ng-model="soko" ng-keyup="sokSporKnapp()" list="forslag" autocomplete="off">
+                 
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="sokKnappSpor" ng-click="sokSporKnapp()"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+
+                <br />
+             
+                <button type="button" class="btn btn-primary glyphicon glyphicon-question-sign col-md-12" ng-click="blaIgjennomSporsmal()"> Innsendte spørsmål</button>
+               
+                
+            </div>
+
+            <div class="divider"><hr /></div>
+            <div class="panel panel-info text-info" style="background-color:aliceblue;">
+                <br />
+                <p>
+                    Dine spørsmål blir besvart av vårt kundesenter. Send inn dine spørsmål <a ng-click="visSkjema()">her</a>.<br /><hr />
+                    Med vennlig hilsen <br />
+                    Oss i HD-Elektronikk
+                </p>
+                <button type="button" class="btn btn-success glyphicon glyphicon-question-sign col-md-12" ng-click="visSkjema()"> Send inn ditt Spørsmål</button>
+            </div>
+
+
+        </div>
+        <div class="row col-md-6 col-md-offset-2 ">
+
+            <div class="text-center" ng-show="laster"><h3>Laster data, vennligst vent ...</h3></div>
+
+            <div ng-show="visFront" class="col-md-12">
+                <div ng-repeat="k in frontFAQ" ng->
+                    <div class="panel panel-default col-md-4 btn" ng-click="hentSporsmalIKategori(k.id)" ng-hide="{{k.id == 7 ? 'true' : 'false'}}">
+                        <img src="{{k.bilde}}" /><br />
+                    </div>
+                </div>
+            </div>
+
+            <div ng-show="brodsti" class="col-md-12 btn-group">
+                <button class="btn btn-info" ng-click="update()"> <span class="glyphicon glyphicon-chevron-left"></span>InfoMeny </button>
+                <a id="brodvalg" class="btn btn-info" ng-model="brodvalg"><span class="glyphicon glyphicon-chevron-down"></span> </a>
+
+                <hr />
+                <br />
+                <p id="sinfo">Trykk på spørsmålene, merket med pil-tagger, for å åpne eller lukke svarene</p>
+            </div>
+
+            <div ng-show="visSporsmal" class="col-md-12">
+                <div id="accordion" class="panel-group" ng-repeat="s in Kategori">
+                    <div class="panel panel-default " style="background-color:aliceblue;">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#{{s.id}}" style="color:orange;" ng-click="antallKlikk(s.antallKlikk,s.id)"><span class="glyphicon glyphicon-chevron-left"></span>{{s.sporsmal}} </a>
+                            </h4>
+                        </div>
+                        <div id="{{s.id}}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>{{s.svar}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-show="visAlleSporsmal" class="col-md-12">
+                <div id="ac" class="panel-group" ng-repeat="s in alleSporsmal | orderBy: '-antallKlikk': false">
+                    <div class="panel panel-default " style="background-color:aliceblue;">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#ac" href="#{{s.id}}" style="color:orange;" aria-expanded="false" aria-controls="{{s.id}}" ng-click="antallKlikk(s.antallKlikk,s.id)"><span class="glyphicon glyphicon-chevron-left"></span>{{s.sporsmal}} </a>
+                            </h4>
+                        </div>
+                        <div id="{{s.id}}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>
+                                    {{s.svar}}
+                                </p>
+                            </div>
+                            <div class="panel-footer" style="background-color:aliceblue;"><i>Sett antall ganger: {{s.antallKlikk}}</i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-show="sokSpor" class="col-md-12">
+                
+                <div id="ac" class="panel-group" ng-repeat="s in alleSpor">
+                    <div class="panel panel-default " style="background-color:aliceblue;">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#ac" href="#{{s.id}}" style="color:orange;" aria-expanded="false" aria-controls="{{s.id}}" ng-click="antallKlikk(s.antallKlikk,s.id)"><span class="glyphicon glyphicon-chevron-left"></span>{{s.sporsmal}} </a>
+                            </h4>
+                        </div>
+                        <div id="{{s.id}}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>
+                                    {{s.svar}}
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div ng-show="visSporsmalSkjema">
+                <form name="skjema">
+                    <h3 class="text-center">Send inn DITT Spørsmål</h3>
+                    <div class="form-group">
+                        <label>Fornavn</label>
+                        <input class="form-control" name="fornavn" ng-model="fornavn" ng-required="true" ng-pattern="/^[a-zæøåA-ZÆØÅ. \-]{2,30}$/" />
+                        <p class="label label-info" ng-show="skjema.fornavn.$invalid && skjema.fornavn.$dirty">Skriv inn et lovlig fornavn</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Din Epost</label>
+                        <input type="email" class="form-control" name="epost" ng-model="epost" ng-required="true" />
+                        <p class="label label-info" ng-show="skjema.epost.$invalid && skjema.epost.$dirty">Skriv inn et lovlig epostadresse</p>
+                    </div>
+                    <div class="form-group ">
+                        <label>Ditt Spørsmål</label>
+                        <input class="form-control" name="sporsmal" ng-model="sporsmal" ng-required="true" ng-pattern="/^[a-zæøåA-ZÆØÅ.0-9 \-?]{5,100}$/">
+                        <p class="label label-info" ng-show="skjema.sporsmal.$invalid && skjema.sporsmal.$dirty">Spørsmålet må innehold minst 5 lovlige tegn.</p>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" ng-click="sendInnSkjema()" ng-disabled="skjema.$invalid" ng-show="innsending">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\bin\Release\DAL.dll.config
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\bin\Release\DAL.dll
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\bin\Release\DAL.pdb
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\bin\Release\EntityFramework.dll
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\bin\Release\Model.dll
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\bin\Release\Model.pdb
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\bin\Release\EntityFramework.xml
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\obj\Release\DAL.dll
+C:\Users\HansMagnus\Documents\Skole\WebApplikasjon\Nettbutikk\DAL\obj\Release\DAL.pdb
